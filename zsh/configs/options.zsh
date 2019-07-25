@@ -7,3 +7,6 @@ setopt extendedglob
 
 # Allow [ or ] whereever you want
 unsetopt nomatch
+
+#remove / and . from WORDCHARS to allow alt-backspace to delete word
+WORDCHARS='*?_-[]~=&;!#$%^(){}<>'

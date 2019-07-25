@@ -17,3 +17,36 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+[[ -s /usr/local/bin/gls ]] && alias ls=$'/usr/local/bin/gls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
+
+#show directories size
+alias dud='du -s *(/)'
+#date for US and CN
+alias adate='for i in US/{Eastern,Pacific} Asia/{Shanghai,Tokyo} Europe/Paris; do printf %-22s "$i:";TZ=$i date +"%m-%d %a %H:%M";done'
+
+alias rsync='rsync --progress --partial'
+alias ...='cd ../../'
+alias port='netstat -ntlp'      #opening ports
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+alias rmm='/bin/rm'
+alias rm=mv-to-trash
+mv-to-trash()
+{
+    mv $@ ~/.myTrash/
+}
+trash()
+{
+    cd ~/.myTrash/
+}
+
+ostype=`uname -s`
+if [[ "$ostype" == "Darwin" ]];then
+    if [[ -s /usr/local/bin/gls ]]; then
+      alias ls=$'/usr/local/bin/gls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
+    fi
+
+    alias cpwd="pwd|tr -d '\n'|pbcopy"
+    alias mvd="ls -d ~/Downloads/*(om[1]) | xargs -I '{}' mv '{}' ."
+fi
+
