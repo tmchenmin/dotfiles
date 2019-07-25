@@ -39,3 +39,5 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+export PATH=$PATH:/usr/local/bin
