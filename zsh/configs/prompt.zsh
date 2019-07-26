@@ -69,3 +69,32 @@ autoload -U colors && colors # Enable colors in prompt
 if ! env | grep -q '^PS1='; then
   PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_info) %# '
 fi
+
+# active command as title in terminals
+case $TERM in
+    xterm*|rxvt*)
+        function title() { print -nP "\e]0;$1\a" } 
+        ;;
+    screen*)
+        if [ -n $TMUX ]; then       # actually in tmux !
+            function title() {  print -nP "\e]2;$1\a" }
+        else
+            function title() {}
+        fi
+        ;;
+    *)
+        function title() {}
+        ;;
+esac
+
+#set screen title if not connected remotely
+screen_precmd() {
+    title "`print -Pn "%~" |sed "s:\([~/][^/]*\)/.*/:\1...:;s:\([^-]*-[^-]*\)-.*:\1:"`" "$TERM $PWD"
+    echo -ne '\033[?17;0;127c'
+}
+
+#{{{-----------------define magic function arrays--------------------------
+    #this works with zsh 4.3.*, will remove the above ones when possible
+    typeset -ga precmd_functions
+    precmd_functions+=screen_precmd
+#}}}
