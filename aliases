@@ -1,9 +1,12 @@
 # Unix
 alias ll="ls -al"
+alias la='ls -A'
 alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias lrt='ls -lrt'
+alias gst='git status -u no'
 
 # Bundler
 alias b="bundle"
