@@ -40,4 +40,8 @@ _load_settings "$HOME/.zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+if [[ -d ~/dotfiles/z.lua ]]; then
+    eval "$(lua ~/dotfiles/z.lua/z.lua --init zsh once)"
+fi
+
 export PATH=$PATH:/usr/local/bin
