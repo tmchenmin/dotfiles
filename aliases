@@ -53,3 +53,5 @@ if [[ "$ostype" == "Darwin" ]];then
     alias mvd="ls -d ~/Downloads/*(om[1]) | xargs -I '{}' mv '{}' ."
 fi
 
+# display path per line
+alias echo-path="echo $PATH | tr : \\\\n"
