@@ -6,6 +6,26 @@
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
+(def-package! atomic-chrome
+  :defer 5                              ; since the entry of this
+                                        ; package is from Chrome
+  :config
+  (setq atomic-chrome-url-major-mode-alist
+        '(("github\\.com"        . gfm-mode)
+          ("emacs-china\\.org"   . gfm-mode)
+          ("stackexchange\\.com" . gfm-mode)
+          ("stackoverflow\\.com" . gfm-mode)))
+
+  (defun +my/atomic-chrome-mode-setup ()
+    (setq header-line-format
+          (substitute-command-keys
+           "Edit Chrome text area.  Finish \
+`\\[atomic-chrome-close-current-buffer]'.")))
+
+  (add-hook 'atomic-chrome-edit-mode-hook #'+my/atomic-chrome-mode-setup)
+
+  (atomic-chrome-start-server))
+
 (def-package! avy
   :commands (avy-goto-char-timer)
   :init
@@ -30,7 +50,7 @@
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
-;;(def-package! eglot)
+(def-package! eglot)
 
 (after! eshell
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
@@ -101,6 +121,8 @@
     (cancel-timer flymake-posframe--timer))
   (setq flymake-posframe-timer
         (run-with-idle-timer flymake-posframe-delay nil #'flymake-posframe-display)))
+
+(def-package! frog-jump-buffer)
 
 (add-hook 'post-command-hook #'flymake-posframe-set-timer)
 (add-hook! (doom-exit-buffer doom-exit-window) #'flymake-posframe-hide)
@@ -255,6 +277,10 @@
   (setq ivy-initial-inputs-alist nil)
   (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
   )
+(after! ivy-hydra
+  ;; Override ivy/autoload/hydras.el
+  (define-key hydra-ivy/keymap "q" #'hydra-ivy/nil)
+  )
 
 (after! quickrun
   (quickrun-add-command "c++/c1z"
@@ -296,16 +322,16 @@
                                          xref-find-definitions-other-frame
                                          xref-find-references))
 
-  (defun xref--show-xrefs (xrefs display-action &optional always-show-list)
-    ;; PATCH
-    (lsp-ui-peek--with-evil-jumps (evil-set-jump))
+  ;; (defun xref--show-xrefs (xrefs display-action &optional always-show-list)
+  ;;   ;; PATCH
+  ;;   (lsp-ui-peek--with-evil-jumps (evil-set-jump))
 
-    ;; PATCH Jump to the first candidate
-    (if (not (cdr xrefs))
-        (xref--pop-to-location (car xrefs) display-action)
-      (funcall xref-show-xrefs-function xrefs
-               `((window . ,(selected-window))))
-      ))
+  ;;   ;; PATCH Jump to the first candidate
+  ;;   (if (not (cdr xrefs))
+  ;;       (xref-pop-to-location (car xrefs) display-action)
+  ;;     (funcall xref-show-xrefs-function xrefs
+  ;;              `((window . ,(selected-window))))
+  ;;     ))
   )
 
 (after! ivy-xref
