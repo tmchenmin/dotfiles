@@ -8,6 +8,7 @@
 ;; More information about these modules (and what flags they support) can be
 ;; found in modules/README.org.
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq doom-localleader-key ",")
 
 (doom! :input

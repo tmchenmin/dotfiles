@@ -6,6 +6,16 @@
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
+(defun sdp-format ()
+  "display sdp in a better way"
+  (interactive)
+  ;; to match \r\n should use \\\\r\\\\n
+
+  (while (re-search-forward "\\(\\,{\\)\\|\\(\\[{\\)\\|\\(videoDescriptions\\)" nil t)
+    (replace-match "\n\\&" nil nil nil))
+  (while (re-search-forward "\\\\r\\\\n\\|\\\\\\\\r\\\\\\\\n" nil t)
+    (replace-match "\n" nil nil)))
+
 (def-package! atomic-chrome
   :defer 5                              ; since the entry of this
                                         ; package is from Chrome
