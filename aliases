@@ -20,7 +20,6 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
-[[ -s /usr/local/bin/gls ]] && alias ls=$'/usr/local/bin/gls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
 
 #show directories size
 alias dud='du -s *(/)'
@@ -51,6 +50,8 @@ if [[ "$ostype" == "Darwin" ]];then
 
     alias cpwd="pwd|tr -d '\n'|pbcopy"
     alias mvd="ls -d ~/Downloads/*(om[1]) | xargs -I '{}' mv '{}' ."
+elif [[ "$ostype" == "Linux" ]];then
+    alias ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
 fi
 
 # display path per line
