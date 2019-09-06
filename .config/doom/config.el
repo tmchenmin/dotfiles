@@ -412,6 +412,16 @@
 
 (def-package! rg)
 
+(def-package! nlinum-relative
+  :config
+  (require 'nlinum-relative)
+  (nlinum-relative-setup-evil)          ;;setup for evil
+  (setq nlinum-relative-redisplay-delay 0) ;;delay
+  (setq display-line-numbers-type nil)     ;;disable linum
+  (setq nlinum-relative-current-symbol "->")     ;; or "" for display current line number
+  (setq nlinum-relative-offset 0)
+  (add-hook! 'prog-mode-hook #'nlinum-relative-mode))
+
 (def-package! smartparens
   :config
   (setq sp-autoinsert-pair nil
