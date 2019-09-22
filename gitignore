@@ -6,6 +6,13 @@
 .byebug_history
 .env
 .git/
+.ccls-cache
+*.diff
+*.patch
+GPATH
+GRTAGS
+GTAGS
+/deps
 /bower_components/
 /log
 /node_modules/
