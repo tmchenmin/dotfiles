@@ -57,3 +57,7 @@ if [[ -d ~/.pyenv ]]; then
     eval "$(pyenv init -)"
   fi
 fi
+
+if [[ -d ~/local/platform-tools ]]; then
+  export PATH=$PATH:$HOME/local/platform-tools
+fi

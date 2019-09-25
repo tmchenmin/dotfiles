@@ -14,6 +14,8 @@
   (while (re-search-forward "\\(\\,{\\)\\|\\(\\[{\\)\\|\\(videoDescriptions\\)" nil t)
     (replace-match "\n\\&" nil nil nil))
   (while (re-search-forward "\\\\r\\\\n\\|\\\\\\\\r\\\\\\\\n" nil t)
+    (replace-match "\n" nil nil))
+  (while (re-search-forward "\\\\n\\|\n" nil t)
     (replace-match "\n" nil nil)))
 
 (def-package! atomic-chrome

@@ -170,6 +170,8 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+colorscheme dracula
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
