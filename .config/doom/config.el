@@ -4,6 +4,9 @@
 (load! "+org")
 (load! "+ui")
 
+(when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
 (defun sdp-format ()

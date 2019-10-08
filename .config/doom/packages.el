@@ -25,6 +25,7 @@
 (package! rust-mode)
 (package! lsp-rust :ignore t)
 (package! nlinum-relative)
+(package! exec-path-from-shell)
 
 (package! function-args)
 (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy" :files ("*")))
