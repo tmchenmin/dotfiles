@@ -68,6 +68,49 @@ zle -N      edit-command-line
 bindkey '\ee' edit-command-line
 # }}}
 
+# 命令补全参数{{{
+#   zsytle ':completion:*:completer:context or command:argument:tag'
+zmodload -i zsh/complist        # for menu-list completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" "ma=${${use_256color+1;7;38;5;143}:-1;7;33}"
+#ignore list in completion
+zstyle ':completion:*' ignore-parents parent pwd directory
+#menu selection in completion
+zstyle ':completion:*' menu select=2
+#zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete _match #_user_expand
+zstyle ':completion:*:match:*' original only 
+#zstyle ':completion:*' user-expand _pinyin
+zstyle ':completion:*:approximate:*' max-errors 1 numeric 
+## case-insensitive (uppercase from lowercase) completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+### case-insensitive (all) completion
+#zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:*:*:processes' force-list always
+zstyle ':completion:*:processes' command 'ps -au$USER' 
+zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=1;31"
+#use cache to speed up pacman completion
+zstyle ':completion::complete:*' use-cache on
+#zstyle ':completion::complete:*' cache-path .zcache 
+#group matches and descriptions
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:descriptions' format $'\e[33m == \e[1;7;36m %d \e[m\e[33m ==\e[m' 
+zstyle ':completion:*:messages' format $'\e[33m == \e[1;7;36m %d \e[m\e[0;33m ==\e[m'
+zstyle ':completion:*:warnings' format $'\e[33m == \e[1;7;31m No Matches Found \e[m\e[0;33m ==\e[m' 
+zstyle ':completion:*:corrections' format $'\e[33m == \e[1;7;37m %d (errors: %e) \e[m\e[0;33m ==\e[m'
+
+#force rehash when command not found
+#  http://zshwiki.org/home/examples/compsys/general
+_force_rehash() {
+    (( CURRENT == 1 )) && rehash
+    return 1    # Because we did not really complete anything
+}
+
+# }}}
+
 # 自定义widget {{{
 #from linuxtoy.org: 
 #   pressing TAB in an empty command makes a cd command with completion list
@@ -82,4 +125,7 @@ dumb-cd(){
 }
 zle -N dumb-cd
 bindkey "\t" dumb-cd #将上面的功能绑定到 TAB 键
+
+#calculator
+calc()  { awk "BEGIN{ print $* }" ; }
 # }}}
