@@ -61,3 +61,25 @@ fi
 if [[ -d ~/local/platform-tools ]]; then
   export PATH=$PATH:$HOME/local/platform-tools
 fi
+
+# 键绑定  {{{ 
+autoload -U edit-command-line
+zle -N      edit-command-line
+bindkey '\ee' edit-command-line
+# }}}
+
+# 自定义widget {{{
+#from linuxtoy.org: 
+#   pressing TAB in an empty command makes a cd command with completion list
+dumb-cd(){
+    if [[ -n $BUFFER ]] ; then # 如果该行有内容
+        zle expand-or-complete # 执行 TAB 原来的功能
+    else # 如果没有
+        BUFFER="cd " # 填入 cd（空格）
+        zle end-of-line # 这时光标在行首，移动到行末
+        zle expand-or-complete # 执行 TAB 原来的功能
+    fi 
+}
+zle -N dumb-cd
+bindkey "\t" dumb-cd #将上面的功能绑定到 TAB 键
+# }}}
