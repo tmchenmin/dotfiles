@@ -58,10 +58,6 @@ if [[ -d ~/.pyenv ]]; then
   fi
 fi
 
-if [[ -d ~/local/platform-tools ]]; then
-  export PATH=$PATH:$HOME/local/platform-tools
-fi
-
 # 键绑定  {{{ 
 autoload -U edit-command-line
 zle -N      edit-command-line

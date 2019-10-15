@@ -7,6 +7,7 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 alias lrt='ls -lrt'
 alias gst='git status -uno'
+alias grv='git remote -v'
 
 # Bundler
 alias b="bundle"
