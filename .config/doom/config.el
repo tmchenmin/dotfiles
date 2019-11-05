@@ -14,12 +14,12 @@
   (interactive)
   ;; to match \r\n should use \\\\r\\\\n
 
-  (while (re-search-forward "\\(\\,{\\)\\|\\(\\[{\\)\\|\\(videoDescriptions\\)" nil t)
-    (replace-match "\n\\&" nil nil nil))
   (while (re-search-forward "\\\\r\\\\n\\|\\\\\\\\r\\\\\\\\n" nil t)
     (replace-match "\n" nil nil))
   (while (re-search-forward "\\\\n\\|\n" nil t)
-    (replace-match "\n" nil nil)))
+    (replace-match "\n" nil nil))
+  (while (re-search-forward "\\(\\,{\\)\\|\\(\\[{\\)\\|\\(videoDescriptions\\)" nil t)
+    (replace-match "\n\\&" nil nil nil)))
 
 (def-package! atomic-chrome
   :defer 5                              ; since the entry of this
