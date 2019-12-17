@@ -6,6 +6,13 @@
 
 (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize))
+(setq org-file-apps
+      '(
+        (auto-mode . emacs)
+        ("\\.mm\\'" . emacs)
+        ("\\.m\\'" . emacs)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . default)))
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
