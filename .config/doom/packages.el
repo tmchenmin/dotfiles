@@ -25,6 +25,7 @@
 (package! rust-mode)
 (package! lsp-rust :ignore t)
 (package! nlinum-relative)
+(package! reveal-in-osx-finder)
 (package! exec-path-from-shell)
 
 (package! function-args)

@@ -427,6 +427,10 @@
   (setq nlinum-relative-offset 0)
   (add-hook! 'prog-mode-hook #'nlinum-relative-mode))
 
+(def-package! reveal-in-osx-finder
+  :config
+  (require 'reveal-in-osx-finder))
+
 (def-package! smartparens
   :config
   (setq sp-autoinsert-pair nil

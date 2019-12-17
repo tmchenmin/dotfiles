@@ -115,6 +115,7 @@
    (:prefix "b"
      :desc "Last buffer" :n "b" #'evil-switch-to-windows-last-buffer
      "l" #'ivy-switch-buffer
+     "f" #'reveal-in-osx-finder
      )
    (:prefix ("e" . "error")
      "n" #'flycheck-next-error
