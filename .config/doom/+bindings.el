@@ -45,6 +45,7 @@
  :n "C-1" #'+popup/raise
  :n "C-c a" #'org-agenda
  :n "C-,"  #'+my/find-references
+ :n "C-'"  #'git-gutter:next-hunk
  :n "M-,"  (λ! (+my/find-references (+my//folder-param t)))
  ;; all symbols
  :n ";"    (λ! (if lsp-mode
