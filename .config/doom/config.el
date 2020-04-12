@@ -14,6 +14,8 @@
         ("\\.x?html?\\'" . default)
         ("\\.pdf\\'" . default)))
 
+(setq deft-directory "~/Documents/notes/orgmode/deft")
+
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
 (defun sdp-format ()
