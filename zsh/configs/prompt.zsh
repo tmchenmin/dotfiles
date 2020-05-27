@@ -90,11 +90,12 @@ esac
 #set screen title if not connected remotely
 screen_precmd() {
     title "`print -Pn "%~" |sed "s:\([~/][^/]*\)/.*/:\1...:;s:\([^-]*-[^-]*\)-.*:\1:"`" "$TERM $PWD"
-    echo -ne '\033[?17;0;127c'
+    #echo -ne '\033[?17;0;127c'
 }
 
 #{{{-----------------define magic function arrays--------------------------
     #this works with zsh 4.3.*, will remove the above ones when possible
+    #the below two lines breaks in windows ssh, it add 6c in prompt
     typeset -ga precmd_functions
     precmd_functions+=screen_precmd
 #}}}
