@@ -13,9 +13,15 @@ Set zsh as your login shell:
 Install
 -------
 
+Install the required tools:
+
+    brew install lua
+
 Clone onto your laptop:
 
     git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+    cd ~/dotfiles
+    git submodule init && git submodule update
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
