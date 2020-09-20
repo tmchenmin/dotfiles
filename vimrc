@@ -173,7 +173,7 @@ if &diff
   set diffopt+=vertical
 endif
 
-colorscheme dracula
+colorscheme mountaineer
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
