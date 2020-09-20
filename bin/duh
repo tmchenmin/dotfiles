@@ -1,0 +1,12 @@
+#bin/bash
+
+# -a show both files and directories
+
+if [[ -e $1 ]]
+then
+    pushd $1
+    /usr/local/bin/gdu -h -a --max-depth=1|gsort -h
+    popd
+else
+    /usr/local/bin/gdu -h -a --max-depth=1|gsort -h
+fi
