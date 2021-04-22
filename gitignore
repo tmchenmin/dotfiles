@@ -23,3 +23,4 @@ log/*.log
 rerun.txt
 tags
 tmp/**/*
+*.o
