@@ -11,6 +11,7 @@ alias grv='git remote -v'
 
 # Bundler
 alias b="bundle"
+alias rga="rg -g '!*Antenna*' -g '!*.js'"
 
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
