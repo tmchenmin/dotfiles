@@ -50,7 +50,7 @@ if [[ "$ostype" == "Darwin" ]];then
       alias ls=$'/usr/local/bin/gls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
     fi
 
-    alias cpwd="pwd|tr -d '\n'|pbcopy"
+    alias cpwd="pwd|tr -d '\n'| sed 's/ /\\ /'|pbcopy"
     alias mvd="ls -d ~/Downloads/*(om[1]) | xargs -I '{}' mv '{}' ."
     alias nrd="npm run debug"
     alias nrr="npm run replace-release-to-lark"
