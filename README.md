@@ -189,6 +189,7 @@ What's in it?
 
 * put [plug.vim](https://github.com/junegunn/vim-plug) under .vim/autoload 
 * open vim, use `:PlugInstall` to install the plugins
+* vim-go, use `:GoInstallBinaries` to install gopls
 
 
 * [Ctrl-P](https://github.com/ctrlpvim/ctrlp.vim) for fuzzy file/buffer/tag finding.

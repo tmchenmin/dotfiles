@@ -28,4 +28,3 @@ fi
 
 unset _old_path
 [[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
