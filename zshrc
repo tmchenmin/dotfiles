@@ -49,6 +49,7 @@ export PATH=$PATH:/usr/local/bin
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 [[ -d ~/.rvm/bin ]] && export PATH="$PATH:$HOME/.rvm/bin"
 [[ -d /snap/bin ]] && export PATH="$PATH:/snap/bin"
+[[ -d $HOME/go/bin ]] && export PATH="$PATH:$HOME/go/bin"
 
 if [[ -d ~/.pyenv ]]; then
   export PYENV_ROOT="$HOME/.pyenv"

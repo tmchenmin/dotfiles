@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lists="silversearcher-ag ripgrep lua5.3 tig mosh fd-find"
+lists="silversearcher-ag ripgrep lua5.3 tig mosh fd-find fzf build-essential"
 
 sudo apt install $lists -y
 
