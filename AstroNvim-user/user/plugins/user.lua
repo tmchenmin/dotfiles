@@ -23,5 +23,15 @@ return {
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
     build = ':lua require("go.install").update_all_sync()'
-  }
+  },
+  "tanvirtin/monokai.nvim",
+  {
+    "tanvirtin/monokai.nvim",
+    lazy = false, -- make sure we load this during startup
+    priority = 1000,
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme monokai]])
+    end,
+  },
 }

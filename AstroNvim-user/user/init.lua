@@ -1,4 +1,4 @@
 return {
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  colorscheme = "monokai",
 }
