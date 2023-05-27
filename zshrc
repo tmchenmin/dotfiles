@@ -1,7 +1,9 @@
 # load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
+if [ -d ~/.zsh/functions ]; then
+  for function in ~/.zsh/functions/*; do
+    source $function
+  done
+fi
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.

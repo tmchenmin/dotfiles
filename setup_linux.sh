@@ -16,7 +16,8 @@ git submodule init && git submodule update
 
 # depends
 
-lists=("vimrc.bundles" "aliases" "tmux.conf" "ctags" "gemrc" "gitignore" "gitmessage" "hushlogin" "psqlrc" "rcrc" "rspec" "vimrc" "zshenv" "zshrc")
+lists=("vim" "zsh" "vimrc.bundles" "aliases" "tmux.conf" "ctags" "gemrc"
+  "gitconfig" "gitignore" "gitmessage" "hushlogin" "psqlrc" "rcrc" "rspec" "vimrc" "zshenv" "zshrc")
 
 for i in ${lists[@]}
 do
