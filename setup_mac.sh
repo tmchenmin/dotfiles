@@ -17,8 +17,8 @@ brew install cmake tig git-lfs
 brew install hammerspoon
 # use ln -s ~/dotfiles/awesome-hammerspoon ~/.hammerspoon
 # for monitor controls install ddcctl
-brew install ddcctl
-
+# brew install ddcctl, not work on mac arm, use
+# https://github.com/TinkoLiu/DDCCli instead
 brew install raycast
 
 brew install kitty
@@ -29,6 +29,7 @@ brew install karabiner-elements
 # delete_or_backspace       -> blackslash(\)
 # escape                    -> grave_accent_and_tilde(`)
 # grave_accent_and_tilde(`) -> delete_or_backspace 
+brew install wireshark
 # ========================================================
 
 
