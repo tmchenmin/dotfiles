@@ -9,8 +9,12 @@
 # command line tools
 brew install tmux the_silver_searcher
 brew install diff-so-fancy
+brew install ripgrep
 # develop tools
 brew install cmake tig git-lfs
+# gnu utils
+#brew install gawk gsed gdu
+brew install coreutils
 
 # ========================================================
 # brew cask, need open it and setup manually
