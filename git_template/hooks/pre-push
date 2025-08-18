@@ -1,7 +1,27 @@
-#!/bin/sh
+#!/bin/bash
 
-local_hook="$HOME"/.git_template.local/hooks/pre-push
+# is multi-hook
+# Do not delete the first comment line, we use this to recognize it is generate by iLint
 
-if [ -f "$local_hook" ]; then
-  . "$local_hook"
-fi
+export LANG="en_US.UTF-8"
+export PATH=$PATH:/usr/local/bin
+
+cmd_name=$(echo $(basename "$0") | cut -d . -f1)
+
+while read local_ref local_sha remote_ref remote_sha; do
+
+    export local_ref
+    export local_sha
+    export remote_ref
+    export remote_sha
+
+    for hook in $(dirname "$0")/${cmd_name}.d/*; do
+        bash ${hook} ${@:1}
+        RESULT=$?
+        if [[ ${RESULT} != 0 ]]; then
+            echo "$hook returned non-zero: $RESULT, abort commit"
+            exit ${RESULT}
+        fi
+    done
+done
+exit 0

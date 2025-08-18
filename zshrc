@@ -129,3 +129,6 @@ bindkey "\t" dumb-cd #将上面的功能绑定到 TAB 键
 #calculator
 calc()  { awk "BEGIN{ print $* }" ; }
 # }}}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[[ -d $HOME/.build_env_config ]] && export PATH="${HOME}/.build_env_config:${PATH}"
