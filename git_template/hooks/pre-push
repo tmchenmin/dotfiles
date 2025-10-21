@@ -15,6 +15,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     export remote_ref
     export remote_sha
 
+    shopt -s nullglob
     for hook in $(dirname "$0")/${cmd_name}.d/*; do
         bash ${hook} ${@:1}
         RESULT=$?
