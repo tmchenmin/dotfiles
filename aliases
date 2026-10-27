@@ -31,7 +31,7 @@ alias adate='for i in US/{Eastern,Pacific} Asia/{Shanghai,Tokyo} Europe/Paris; d
 alias rsync='rsync --progress --partial'
 alias ...='cd ../../'
 alias port='netstat -ntlp'      #opening ports
-alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias tree-full="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 alias rmm='/bin/rm'
 alias rm=mv-to-trash

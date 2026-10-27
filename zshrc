@@ -132,3 +132,16 @@ calc()  { awk "BEGIN{ print $* }" ; }
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -d $HOME/.build_env_config ]] && export PATH="${HOME}/.build_env_config:${PATH}"
+
+# Added by coco installer
+export PATH="/Users/chenmin/.local/bin:$PATH"
+
+# Added by coco installer
+export PATH="/Users/chenmin/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/chenmin/.bun/_bun" ] && source "/Users/chenmin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
